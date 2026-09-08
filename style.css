@@ -55,22 +55,22 @@ button {
 
 :root {
     /* الألوان */
-    --primary: #b96545;
-    --primary-dark: #9c5136;
+    --primary: #a85739;
+    --primary-dark: #8c4429;
     --primary-soft: #f7e5dc;
     --primary-tint: #fdf3ee;
 
     --ink: #4a2e24;
     --text: #6b4f45;
-    --muted: #98837b;
+    --muted: #826c63;
 
     --surface: #ffffff;
     --bg: #fdf8f5;
     --line: #f0dfd6;
 
-    --green: #25d366;
-    --green-dark: #1eb955;
-    --danger: #c2554a;
+    --green: #15803d;
+    --green-dark: #11652f;
+    --danger: #b34a3f;
     --danger-soft: #fbeae7;
 
     /* الزوايا */
@@ -194,7 +194,7 @@ h1, h2, h3 {
 .btn-whatsapp {
     background: var(--green);
     color: #fff;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+    box-shadow: 0 4px 14px rgba(21, 128, 61, 0.22);
 }
 
 .btn-whatsapp:hover {
@@ -634,8 +634,14 @@ h1, h2, h3 {
 }
 
 .soon-placeholder {
-    font-size: 56px;
-    opacity: 0.75;
+    width: 56px;
+    height: 56px;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.45;
 }
 
 .soon-tag {
@@ -743,7 +749,7 @@ h1, h2, h3 {
     border-radius: 50%;
     background: var(--green);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    box-shadow: 0 8px 24px rgba(21, 128, 61, 0.3);
     z-index: 55;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -986,8 +992,15 @@ h1, h2, h3 {
 }
 
 .cart-empty-icon {
-    font-size: 52px;
-    margin-bottom: 10px;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 12px;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.55;
 }
 
 .cart-empty-title {
@@ -1473,8 +1486,31 @@ h1, h2, h3 {
 /* Storefront refresh */
 :root { --container: 1180px; }
 
-.cart-button { width: auto; min-width: 92px; border-radius: 999px; padding-inline: 14px; gap: 8px; }
-.cart-label { font-size: 14px; font-weight: 800; }
+/* زرار السلة: أيقونة + كلمة "السلة" في سطر واحد */
+.cart-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: auto;
+    height: 42px;
+    padding-inline: 15px;
+    border-radius: 999px;
+}
+
+.cart-label {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+}
+
+/* الشارة على زرار بيضاوي: فوق جهة الأيقونة */
+.cart-button .cart-badge {
+    top: -5px;
+    inset-inline-end: auto;
+    inset-inline-start: 6px;
+}
 
 .hero { padding: 34px 18px 42px; text-align: start; }
 .hero-inner { width: min(var(--container), 100%); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .8fr); align-items: center; gap: clamp(32px, 7vw, 90px); }
@@ -1494,10 +1530,6 @@ h1, h2, h3 {
 .hero-image-label { position: absolute; inset-inline-start: -22px; bottom: 24px; padding: 10px 16px; border-radius: 14px; background: rgba(255,255,255,.94); box-shadow: var(--shadow-md); color: var(--muted); font-size: 11px; }
 .hero-image-label b { display: block; color: var(--ink); font-size: 14px; }
 
-.menu .section-head { margin-bottom: 18px; }
-.category-bar { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
-.category-chip { padding: 8px 17px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: 13px; font-weight: 700; text-decoration: none; }
-.category-chip.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
 .product-badge { position: absolute; top: 12px; inset-inline-start: 12px; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--primary-dark); font-size: 11px; font-weight: 800; box-shadow: var(--shadow-sm); }
 .product-badge-hot { background: var(--primary); color: #fff; }
 .mobile-cart-bar { display: none; }
@@ -1528,4 +1560,42 @@ h1, h2, h3 {
     .mobile-cart-bar > span:nth-child(2) { grid-row: 1 / 3; grid-column: 2; font-weight: 800; }
     .mobile-cart-count { font-size: 12px; color: #e9d9d2; }
     .mobile-cart-bar strong { font-size: 13px; }
+}
+
+
+/* =========================
+   مساحات لمس مريحة على الموبايل
+   (الأصابع محتاجة مساحة أكبر من مؤشر الماوس)
+========================= */
+
+@media (pointer: coarse) {
+
+    .stepper-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .cart-item-bottom .stepper-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cart-item-remove {
+        width: 40px;
+        height: 40px;
+        font-size: 19px;
+    }
+
+    .cart-close {
+        width: 44px;
+        height: 44px;
+    }
+
+    .cart-button {
+        height: 46px;
+    }
+
+    .header-nav a {
+        padding-block: 12px;
+    }
 }

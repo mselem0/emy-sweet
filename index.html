@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#b96545">
+    <meta name="theme-color" content="#a85739">
 
     <title>Emy Sweet | حاجة حلوة تستاهل تتجرب</title>
 
@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body>
@@ -76,7 +76,7 @@
     <div class="hero-inner">
 
         <div class="hero-copy">
-        <span class="hero-kicker">حلويات بيتي معمولة بحب</span>
+        <span class="hero-kicker">حلويات بيتي</span>
         <h1>الحلو اللي نفسك فيه،<br><span>يوصلك طازة.</span></h1>
 
         <p>اختار من المنيو، ضيف للسلة، وابعت طلبك على واتساب في أقل من دقيقة.</p>
@@ -114,15 +114,9 @@
     <section class="section menu" id="menu">
 
         <div class="section-head">
-            <span class="eyebrow">المنيو</span>
-            <h2>اختار اللي نفسك فيه</h2>
-            <p>كل الأسعار بالجنيه المصري وشاملة التحضير.</p>
-        </div>
-
-        <div class="category-bar" aria-label="تصنيفات المنيو">
-            <a href="#menu" class="category-chip is-active">الكل</a>
-            <span class="category-chip">كب كيك</span>
-            <span class="category-chip">تشيز كيك</span>
+            <span class="eyebrow" id="menuCount">المنيو</span>
+            <h2>المنيو</h2>
+            <p>الأسعار بالجنيه المصري. الشحن بيتحسب على حسب منطقتك.</p>
         </div>
 
         <div class="products">
@@ -135,13 +129,13 @@
 
                 <div class="product-media">
                     <img src="images/mango.jpg" alt="كب كيك مانجو" width="843" height="1264" loading="lazy" decoding="async">
-                    <span class="product-badge">طازة يوميًا</span>
+                    <span class="product-badge">جديد</span>
                 </div>
 
                 <div class="product-body">
 
                     <h3>كب كيك مانجو</h3>
-                    <p class="product-desc">كيكة بطعم المانجو الكريمي اللذيذ</p>
+                    <p class="product-desc">طبقات كريمة مع قطع مانجو</p>
 
                     <div class="product-price">
                         <span class="price-value">50</span>
@@ -180,7 +174,7 @@
                 <div class="product-body">
 
                     <h3>كب كيك شوكليت</h3>
-                    <p class="product-desc">كيكة بطعم الشوكليت غنية ولذيذة</p>
+                    <p class="product-desc">كريمة شوكولاتة مع كرات كرانشي</p>
 
                     <div class="product-price">
                         <span class="price-value">60</span>
@@ -218,7 +212,7 @@
                 <div class="product-body">
 
                     <h3>تشيز كيك لوتس</h3>
-                    <p class="product-desc">تشيز كيك كريمي بطعم اللوتس اللذيذ</p>
+                    <p class="product-desc">تشيز كيك بطبقة لوتس</p>
 
                     <div class="product-price">
                         <span class="price-value">70</span>
@@ -247,13 +241,17 @@
             <article class="product product-soon" aria-label="كيكة الفراولة — قريبًا">
 
                 <div class="product-media">
-                    <div class="soon-placeholder" aria-hidden="true">🍓</div>
+                    <svg class="soon-placeholder" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                        <path d="M8 33h32M11 33l2.5-9.5A11 11 0 0 1 24 15a11 11 0 0 1 10.5 8.5L37 33"></path>
+                        <path d="M24 15v-4M20 11h8"></path>
+                        <path d="M10 38h28"></path>
+                    </svg>
                     <span class="soon-tag">قريبًا</span>
                 </div>
 
                 <div class="product-body">
                     <h3>كيكة الفراولة</h3>
-                    <p class="product-desc">في الطريق إليك… استنونا 🤎</p>
+                    <p class="product-desc">لسه بنجهزها. اسأل عنها ونقولك أول ما تنزل.</p>
                     <button class="btn btn-ghost" type="button" data-whatsapp>اسأل عنها</button>
                 </div>
 
@@ -276,7 +274,7 @@
 
             <h2>حاجة حلوة تستاهل تتجرب</h2>
 
-            <p>في Emy Sweet بنحب نقدّم حلويات بطعم مميز وشكل بسيط، يخلي كل قطعة ليها طعمها الخاص.</p>
+            <p>في Emy Sweet بنحب نقدم حلويات بطعم مميز وشكل بسيط يخلي كل قطعة لها طعمها الخاص.</p>
 
             <p>بدأنا بحلم صغير، وهدفنا إن كل طلب يوصلكم بجودة وطعم يخليكم تحبوا تجربوه تاني. 🤎</p>
 
@@ -336,7 +334,10 @@
         <div id="cartItems" class="cart-items"></div>
 
         <div class="cart-empty" id="cartEmpty">
-            <div class="cart-empty-icon" aria-hidden="true">🧁</div>
+            <svg class="cart-empty-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                <path d="M12 17h24l-2.5 18a3 3 0 0 1-3 2.6H17.5a3 3 0 0 1-3-2.6L12 17Z"></path>
+                <path d="M18.5 17v-3a5.5 5.5 0 0 1 11 0v3"></path>
+            </svg>
             <p class="cart-empty-title">السلة فاضية</p>
             <p class="cart-empty-text">اختار حاجة حلوة من المنيو وابدأ طلبك.</p>
             <button class="btn btn-primary" type="button" data-close-cart>تصفح المنيو</button>
@@ -352,12 +353,12 @@
                 </div>
 
                 <div class="summary-row">
-                    <span>💰 العربون <bdi dir="ltr">(50%)</bdi></span>
+                    <span>العربون المطلوب <bdi dir="ltr">(50%)</bdi></span>
                     <strong><span id="cartDeposit">0</span> جنيه</strong>
                 </div>
 
                 <div class="summary-row">
-                    <span>🚚 مصاريف الشحن</span>
+                    <span>مصاريف الشحن</span>
                     <strong class="muted">حسب موقعك</strong>
                 </div>
 
@@ -403,7 +404,7 @@
                     إرسال الطلب على واتساب
                 </button>
 
-                <p class="checkout-hint">هيتفتح واتساب بالطلب جاهز — تبعته وإحنا نأكدلك.</p>
+                <p class="checkout-hint">هيفتح واتساب والطلب مكتوب جاهز. ابعته وهنرد عليك بالتأكيد ومصاريف الشحن.</p>
 
             </form>
 
@@ -431,7 +432,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 
-<script src="script.js" defer></script>
+<script src="script.js?v=7" defer></script>
 
 </body>
 </html>

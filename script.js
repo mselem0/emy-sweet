@@ -43,6 +43,15 @@
     }
 
 
+    // صيغة الجمع في العربي: 1 منتج / منتجين / 3-10 منتجات / 11+ منتج
+    function productWord(count) {
+        if (count === 1) { return "منتج واحد"; }
+        if (count === 2) { return "منتجين"; }
+        if (count <= 10) { return count + " منتجات"; }
+        return count + " منتج";
+    }
+
+
     // =========================
     // حالة السلة
     // =========================
@@ -170,7 +179,7 @@
         renderCart();
         bumpBadge();
 
-        showToast("تم إضافة « " + name + " » للسلة");
+        showToast("تمت إضافة " + name + " للسلة");
     }
 
 
@@ -202,12 +211,14 @@
             mobileCartTotalEl.textContent = formatNumber(total);
             document.body.classList.toggle("has-cart-items", count > 0);
         }
-        $("[data-open-cart]").setAttribute(
-            "aria-label",
-            count === 0
-                ? "فتح سلة الطلبات — السلة فاضية"
-                : "فتح سلة الطلبات — " + count + " منتج"
-        );
+        $$("[data-open-cart]").forEach(function (el) {
+            el.setAttribute(
+                "aria-label",
+                count === 0
+                    ? "السلة — فاضية"
+                    : "السلة — " + productWord(count)
+            );
+        });
 
         // الحالة الفارغة
         var isEmpty = cart.length === 0;
@@ -365,7 +376,7 @@
             cart.splice(index, 1);
             saveCart();
             renderCart();
-            showToast("تم حذف « " + name + " » من السلة");
+            showToast("اتشال " + name + " من السلة");
         }, row ? 200 : 0);
     }
 
@@ -394,11 +405,13 @@
 
         overlayEl.hidden = false;
 
-        // نجبر المتصفح على حساب الإطار قبل الأنيميشن
-        requestAnimationFrame(function () {
-            overlayEl.classList.add("show");
-            panelEl.classList.add("show");
-        });
+        // نجبر المتصفح يحسب التخطيط قبل ما نضيف كلاس الأنيميشن.
+        // (requestAnimationFrame مابيشتغلش في التبويبات المخفية،
+        //  فكانت السلة ممكن تفضل مقفولة — الـ reflow بيشتغل دايمًا.)
+        void overlayEl.offsetWidth;
+
+        overlayEl.classList.add("show");
+        panelEl.classList.add("show");
 
         panelEl.setAttribute("aria-hidden", "false");
         document.body.classList.add("no-scroll");
@@ -674,6 +687,12 @@
 
     function showToast(message, isError) {
 
+        // والسلة مفتوحة، المستخدم شايف التغيير قدامه —
+        // فالتوست بيغطي الفورم من غير فايدة. الأخطاء بس هي اللي تظهر.
+        if (isCartOpen() && !isError) {
+            return;
+        }
+
         clearTimeout(toastTimer);
 
         toastEl.textContent = message;
@@ -743,6 +762,15 @@
 
         // سنة الحقوق
         $("#year").textContent = new Date().getFullYear();
+
+        // عدد الأصناف المتاحة — يتحدّث لوحده لما تضيف منتج
+        var available = $$(".product[data-product]").length;
+
+        $("#menuCount").textContent =
+            available === 1 ? "صنف واحد متاح"
+                : available === 2 ? "صنفين متاحين"
+                : available <= 10 ? available + " أصناف متاحة"
+                : available + " صنف متاح";
     }
 
     if (document.readyState === "loading") {
